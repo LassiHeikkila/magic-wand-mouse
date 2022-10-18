@@ -220,13 +220,6 @@ void buttonEventHandler( void *pvParameters) {
       continue;
     }
 
-    // got button event -> do something with it
-    // for now, just print to //Serial
-    // next phase: usb mouse clicks
-    // next phase: bluetooth mouse clicks
-
-    //Serial.println(//SerializeButtonEvent(&buttonEvt));
-
     if (buttonEvt.id == ButtonLeft) {
       if (buttonEvt.state == ButtonPressed) {
         Mouse.press(MOUSE_LEFT);
@@ -249,19 +242,13 @@ void setup()
 {
 
   Mouse.begin();
-  ////Serial.begin(115200);
+  //Serial.begin(115200);
 
   delay(1000); // prevents usb driver crash on startup, do not omit this
   //while (!Serial) ;  // Wait for //Serial terminal to open port before starting program
   if (!IMU.begin()) {
     //Serial.println("failed to intialize IMU!");
   }
-
-  //Serial.println("");
-  //Serial.println("******************************");
-  //Serial.println("        Program start         ");
-  //Serial.println("******************************");
-  //Serial.flush();
 
   // Set the led the rtos will blink when we have a fatal rtos error
   // RTOS also Needs to know if high/low is the state that turns on the led.
